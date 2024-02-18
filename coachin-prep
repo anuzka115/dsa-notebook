@@ -1,0 +1,68 @@
+DSA for Coachin
+
+/ Fills prefix sum array
+void fillPrefixSum(int arr[], int n, int prefixSum[])
+{
+    prefixSum[0] = arr[0];
+    // Adding present element with previous element
+    for (int i = 1; i < n; i++)
+        prefixSum[i] = prefixSum[i - 1] + arr[i];
+}
+
+
+/Binary search 
+int binarySearch(int arr[], int l, int r, int x)
+{
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+ 
+        // Check if x is present at mid
+        if (arr[m] == x)
+            return m;
+ 
+        // If x greater, ignore left half
+        if (arr[m] < x)
+            l = m + 1;
+ 
+        // If x is smaller, ignore right half
+        else
+            r = m - 1;
+    }
+ 
+    // If we reach here, then element was not present
+    return -1;
+}
+
+/max subarray 
+
+int maxSubArraySum(int a[], int size)
+{
+    int max_so_far = INT_MIN, max_ending_here = 0;
+ 
+    for (int i = 0; i < size; i++) {
+        max_ending_here = max_ending_here + a[i];
+        if (max_so_far < max_ending_here)
+            max_so_far = max_ending_here;
+ 
+        if (max_ending_here < 0)
+            max_ending_here = 0;
+    }
+    return max_so_far;
+}
+
+
+/Time complexity hint
+
+≤ 10       O(n!), O(n6)           e.g. Enumerating a permutation 
+≤ 15       O(2n × n2)             e.g. DP TSP 
+≤ 20       O(2n), O(n5)           e.g. DP + bitmask technique 
+≤ 50       O(n4)                  e.g. DP with 3 dimensions + O(n) loop, choosing nCk=4
+≤ 100      O(n3)                  e.g. Floyd Warshall’s 
+≤ 1K       O(n2)                  e.g. Bubble/Selection/Insertion Sort 
+≤ 100K     O(n log2 n)            e.g. Merge Sort, building Segment Tree 
+≤ 1M       O(n), O(log2 n), O(1)  Usually, contest problem has n ≤ 1M 
+
+/string methods
+
+
+
