@@ -9,3 +9,4 @@ vector<int> factor(int n) {
 	if (n > 1) { ret.push_back(n); }
 	return ret;
 }
+/O(n^1/2)
